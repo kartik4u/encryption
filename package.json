@@ -1,6 +1,6 @@
 {
   "name": "encrypt-decrypt-api",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "dependencies": {
     "crypto-js": "^4.1.1"
