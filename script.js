@@ -1,3 +1,11 @@
-const {encrypt,decrypt}= require("encrypt-decrypt-api")
+const {encrypt,decrypt,generateKeyFiles,encryptString,decryptString}= require("encrypt-decrypt-api")
 
-console.log(decrypt("U2FsdGVkX1/3fLFzthsfPEqpuB+SrTY6XapIoiDI8xc="));
+let keys = generateKeyFiles(); // public key and private key
+
+//console.log(generateKeyFiles().publicKey);
+const encrypted = encryptString({ firstName: "test" }, keys.publicKey);
+
+const deciphertext = decryptString(encrypted, keys.privateKey);
+
+
+console.log(deciphertext);

@@ -1,4 +1,5 @@
 var CryptoJS = require("crypto-js");
+const crypto = require('crypto');
 
 
 function encrypt(data={ firstName: "test" }) {
@@ -14,5 +15,47 @@ function decrypt(ciphertext) {
 }
 
 
+function generateKeyFiles() {
+    const keyPair = crypto.generateKeyPairSync('rsa', {
+       modulusLength: 530,
+       publicKeyEncoding: {
+          type: 'spki',
+          format: 'pem'
+       },
+       privateKeyEncoding: {
+          type: 'pkcs8',
+          format: 'pem',
+          cipher: 'aes-256-cbc',
+          passphrase: ''
+       }
+    });
+    return {"publicKey":keyPair.publicKey,"privateKey":keyPair.privateKey}
+ }
 
-module.exports = {encrypt,decrypt}
+
+
+ // Encrypting the pased string
+function encryptString (plaintext, publicKey) { 
+    // Encrypting data using publicEncrypt() method and a public key
+    const encrypted = crypto.publicEncrypt(
+       publicKey, Buffer.from(JSON.stringify(plaintext)));
+ 
+    return encrypted.toString("base64");
+ }
+ 
+ // Decrypting the passed string with private Key
+ function decryptString (ciphertext, privateKey) { 
+    // Decrypting data using privateDecrypt() method
+    // and the corresponding private key
+    const decrypted = crypto.privateDecrypt(
+       {
+          key: privateKey,
+          passphrase: '',
+       },
+       Buffer.from(ciphertext, "base64")
+    );
+    return JSON.parse(decrypted.toString("utf8"));
+ }
+
+
+ module.exports = {encrypt,decrypt,generateKeyFiles,encryptString,decryptString}
