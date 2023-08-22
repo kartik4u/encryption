@@ -1,0 +1,22 @@
+{
+  "name": "encrypt-decrypt-api",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kartik4u/encryption.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kartik4u/encryption/issues"
+  },
+  "homepage": "https://github.com/kartik4u/encryption#readme"
+}
