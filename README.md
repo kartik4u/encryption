@@ -7,13 +7,13 @@
 
 const {encrypt,decrypt}= require("encrypt-decrypt-api")
 
-encrypt({ firstName: "test" });
+encrypt({ firstName: "test" },PrivateKey);
 
-decrypt("U2FsdGVkX1/3fLFzthsfPEqpuB+SrTY6XapIoiDI8xc=")
+decrypt("U2FsdGVkX1/3fLFzthsfPEqpuB+SrTY6XapIoiDI8xc=",PrivateKey)
 
 ```
 
-# cripto 
+# crypto 
 
 ```ruby
 

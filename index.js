@@ -2,14 +2,14 @@ var CryptoJS = require("crypto-js");
 const crypto = require('crypto');
 
 
-function encrypt(data={ firstName: "test" }) {
-    var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), 'secret key 123').toString();
+function encrypt(data={ firstName: "test" },privateKey='secret key 123') {
+    var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), privateKey).toString();
     return ciphertext
 }
 
-function decrypt(ciphertext) {
+function decrypt(ciphertext,privateKey='secret key 123') {
     // Decrypt
-    var bytes = CryptoJS.AES.decrypt(ciphertext, 'secret key 123');
+    var bytes = CryptoJS.AES.decrypt(ciphertext,privateKey);
     var deciphertext = bytes.toString(CryptoJS.enc.Utf8);
     return deciphertext
 }
