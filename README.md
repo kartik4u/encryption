@@ -1,19 +1,27 @@
-# encryption
-
-
-# crypto.js
+# encryption with Private key
 
 ```ruby
 
 const {encrypt,decrypt}= require("encrypt-decrypt-api")
 
-encrypt({ firstName: "test" },PrivateKey);
+let PrivateKey="my-private-key"; // user defined
 
-decrypt("U2FsdGVkX1/3fLFzthsfPEqpuB+SrTY6XapIoiDI8xc=",PrivateKey)
+const encrypted = encrypt({ firstName: "test" },PrivateKey);
+
+const deciphertext = decrypt("U2FsdGVkX1/3fLFzthsfPEqpuB+SrTY6XapIoiDI8xc=",PrivateKey)
+
+
+---------FRONTEND---------------
+
+import {encrypt,decrypt} from "encrypt-decrypt-api"
+
+const encrypted = encrypt({ firstName: "test" }, PrivateKey);
+
+const deciphertext = decrypt(encrypted, PrivateKey);
 
 ```
 
-# crypto 
+# encryption with public and Private key
 
 ```ruby
 
